@@ -1,0 +1,376 @@
+:root {
+  --bg-main: #f3e8ff;
+  --bg-soft: #efe3ff;
+  --bg-card: #ffffff;
+  --text-main: #2c2340;
+  --text-muted: #6d6290;
+  --accent: #6f4ed8;
+  --accent-soft: #dfd0ff;
+  --border-soft: rgba(111, 78, 216, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(180deg, #f7efff 0%, #f3e8ff 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-frame {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 18px 0;
+}
+
+.video-blur {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 20vw;
+  min-width: 120px;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(4px);
+  opacity: 0.45;
+}
+
+.video-blur-left {
+  left: 0;
+  background: linear-gradient(180deg, #c7b4f2, #b49be0, #dac8fa);
+}
+
+.video-blur-right {
+  right: 0;
+  background: linear-gradient(180deg, #d2c0f8, #bfa7ea, #e5d7ff);
+}
+
+.app-shell {
+  width: min(1200px, 92vw);
+  min-height: calc(100vh - 36px);
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  border-radius: 28px;
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.sidebar {
+  background: rgba(239, 227, 255, 0.75);
+  border-right: 1px solid var(--border-soft);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-pill {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid transparent;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 4px;
+}
+
+.nav-pill.active {
+  background: var(--accent-soft);
+  border-color: var(--border-soft);
+  font-weight: 700;
+}
+
+.content {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  padding: 18px;
+  width: min(980px, 100%);
+  box-shadow: 0 12px 32px rgba(111, 78, 216, 0.08);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 44px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.description {
+  max-width: 700px;
+  line-height: 1.45;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.button-row {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 10px 14px;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.primary-btn {
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary-btn.small {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.secondary-btn {
+  background: var(--accent-soft);
+  color: var(--text-main);
+}
+
+.episode-list {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.episode-list.scrollable {
+  max-height: 64vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.episode-card {
+  border-radius: 24px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-soft);
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.episode-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(108, 77, 217, 0.16);
+}
+
+.episode-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  flex: 0 0 auto;
+  background: linear-gradient(145deg, #dac5ff, #cdb5fb);
+}
+
+.episode-main {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  flex: 1;
+}
+
+.meta-row {
+  font-size: 14px;
+}
+
+.season-banner {
+  border-radius: 24px;
+  padding: 26px;
+  background: linear-gradient(180deg, #e4d2ff 0%, #c7b4f2 60%, #9e90bd 100%);
+  margin-bottom: 16px;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.season-banner .muted {
+  color: rgba(44, 35, 64, 0.9);
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.hero-thumb {
+  border-radius: 24px;
+  min-height: 160px;
+  background: linear-gradient(145deg, #e4d6fb, #d3c3f2);
+}
+
+.quick-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.quick-list-head.centered {
+  justify-content: center;
+}
+
+.quick-list h2 {
+  margin: 0;
+}
+
+.compact-episode {
+  border-top: 1px solid var(--border-soft);
+  padding: 10px 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compact-episode:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.rating-center {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.rating-pill {
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: var(--accent-soft);
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-weight: 700;
+}
+
+.video-placeholder {
+  margin: 14px 0;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #e3d8f8, #cfc0f5);
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.player-panel {
+  width: 100%;
+  max-width: none;
+}
+
+.video-large {
+  min-height: min(72vh, 720px);
+  border-radius: 24px;
+}
+
+.next-videos {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.next-video-card {
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-soft);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    width: 100vw;
+    border-radius: 0;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+  }
+
+  .video-blur {
+    display: none;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-soft);
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .nav-pill {
+    min-width: 70px;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+}
