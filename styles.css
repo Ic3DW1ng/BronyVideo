@@ -1,0 +1,93 @@
+:root {
+  --bg-main: #f4eefb;
+  --bg-soft: #ede4f8;
+  --bg-card: #ffffff;
+  --text-main: #31234a;
+  --text-muted: #6f6483;
+  --accent: #6c4dd9;
+  --accent-soft: #d9ccfb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-main);
+  background: radial-gradient(circle at top left, #f8f3ff, #f2ebfb 60%, #eee6fa);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+}
+
+.sidebar {
+  background: rgba(233, 221, 249, 0.55);
+  border-right: 1px solid rgba(108, 77, 217, 0.15);
+  padding: 18px 12px;
+}
+
+.pill {
+  border-radius: 18px;
+}
+
+.surface {
+  background: var(--bg-card);
+  border: 1px solid rgba(108, 77, 217, 0.13);
+  border-radius: 24px;
+}
+
+.soft-surface {
+  background: var(--bg-soft);
+  border-radius: 30px;
+}
+
+.thumbnail {
+  background: linear-gradient(145deg, #e3d8f8, #cfc0f5);
+  border-radius: 20px;
+}
+
+.star {
+  color: #7b66d9;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.action-btn {
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(108, 77, 217, 0.22);
+}
+
+.glass {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45), rgba(41, 23, 89, 0.35));
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(108, 77, 217, 0.12);
+    display: flex;
+    overflow-x: auto;
+    gap: 0.6rem;
+    padding: 0.7rem;
+  }
+}
